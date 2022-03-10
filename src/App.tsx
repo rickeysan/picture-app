@@ -1,9 +1,12 @@
 import './App.css'
+import { Header } from './components/Header'
+import { Hero } from './components/Hero'
 
 function App() {
   return (
     <div className="App">
-      <h1 className="bg-rose-400	underline">Hello world!</h1>
+      <Header />
+      <Hero />
     </div>
   )
 }
