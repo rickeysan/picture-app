@@ -1,5 +1,11 @@
 
 export const PostCreate = () => {
+
+    // 投稿ボタンが押されたら
+    const handleSubmit = () => {
+
+    }
+
     return (
         <>
             <div class="form-control w-full max-w-xs">
