@@ -28,7 +28,7 @@ export const Hero = () => {
     setPictureId(makeRandomPictureId())
   }
 
-  const fetchData = async (fetchUrl: string) => {
+  const fetchData = async (fetchUrl) => {
     setLoading(true)
     const request = await axios.get(fetchUrl)
     console.log(request.data.primaryImage)
@@ -49,7 +49,7 @@ export const Hero = () => {
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">絵画をじっくりと観察してみましょう</h2>
-          <PostCreate />
+          <PostCreate picture={picture} />
           <div className="card-actions justify-center">
             <button className="btn btn-primary" onClick={() => changePicture()}>
               他の画像を見る
