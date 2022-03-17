@@ -1,6 +1,17 @@
+import { doc, setDoc } from 'firebase/firestore'
+import db from '../firebase/index'
+
 export const PostCreate = () => {
   // 投稿ボタンが押されたら
-  const handleSubmit = () => {}
+  const handleSubmit = () => {
+    console.log('handleSubmitです')
+    // Add a new document in collection "cities"
+    setDoc(doc(db, 'cities', 'LA'), {
+      name: 'Los Angeles',
+      state: 'CA',
+      country: 'USA',
+    })
+  }
 
   return (
     <>
@@ -25,7 +36,9 @@ export const PostCreate = () => {
           placeholder="Bio"
         ></textarea>
       </div>
-      <button className="btn btn-primary">投稿する</button>
+      <button className="btn btn-primary" onClick={() => handleSubmit()}>
+        投稿する
+      </button>
     </>
   )
 }
