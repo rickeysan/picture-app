@@ -6,7 +6,18 @@ export const PostCreate = (props) => {
   const picture = props.picture
   const [newName, setNewName] = useState('')
   const [newComment, setNewComment] = useState('')
+  const [errForm, setErrForm] = useState('')
   const postsCollectionRef = collection(db, 'posts')
+
+  const judgeForm = () => {
+    if (newComment.length > 140) {
+      console.log('文字数オーバーです')
+      setErrForm('err-form__label')
+    } else {
+      console.log('文字数問題なしです')
+      setErrForm('')
+    }
+  }
 
   // 投稿ボタンが押されたら
   const createPost = async () => {
@@ -27,7 +38,7 @@ export const PostCreate = (props) => {
         </label>
         <input
           type="text"
-          placeholder="Type here"
+          placeholder="ニックネーム"
           className="input input-bordered w-full max-w-xs"
           value={newName}
           onChange={(event) => { setNewName(event.target.value) }}
@@ -36,14 +47,15 @@ export const PostCreate = (props) => {
       <div className="form-control">
         <label className="label">
           <span className="label-text">
-            この絵画から分かる事実を140字以内で書いてみましょう
+            この絵画から分かる事実を140字以内で書いてみましょう  　　 <span className={errForm}>{newComment.length} / 140文字</span>
           </span>
         </label>
         <textarea
           className="textarea textarea-bordered h-24"
-          placeholder="Bio"
+          placeholder="コメント"
           value={newComment}
           onChange={(event) => { setNewComment(event.target.value) }}
+          onKeyUp={() => { judgeForm() }}
         ></textarea>
       </div>
       <button className="btn btn-primary" onClick={() => createPost()}>
