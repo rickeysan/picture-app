@@ -1,6 +1,7 @@
 import { addDoc, collection, getDocs, updateDoc, doc, deleteDoc } from 'firebase/firestore'
 import db from '../firebase/index'
 import { useState } from 'react'
+import { isEmpty } from '@firebase/util'
 
 export const PostCreate = (props) => {
   const picture = props.picture
@@ -8,6 +9,10 @@ export const PostCreate = (props) => {
   const [newComment, setNewComment] = useState('')
   const [errForm, setErrForm] = useState('')
   const postsCollectionRef = collection(db, 'posts')
+  // const [errMsg, setErrMsg] = useState({ 'name': '', 'comment': '' })
+  const [errNameMsg, setErrNameMsg] = useState('')
+  const [errCommentMsg, setErrCommentMsg] = useState('')
+
 
   const judgeForm = () => {
     if (newComment.length > 140) {
@@ -19,14 +24,68 @@ export const PostCreate = (props) => {
     }
   }
 
+  const validNameRequired = (value) => {
+    if (isEmpty(value)) {
+      console.log('入力されていない')
+      setErrNameMsg('入力必須です')
+      return false
+    } else {
+      console.log('入力されている')
+      setErrNameMsg('')
+      return true
+    }
+  }
+
+  const validNameMaxLen = (value, length) => {
+    if (value.length <= length) {
+      setErrNameMsg('')
+      return true
+    } else {
+      setErrNameMsg(length + '字以内で入力してください')
+      return false
+    }
+  }
+
+
+  const validCommentRequired = (value) => {
+    if (isEmpty(value)) {
+      console.log('入力されていない')
+      setErrCommentMsg('入力必須です')
+      return false
+    } else {
+      console.log('入力されている')
+      setErrCommentMsg('')
+      return true
+    }
+  }
+
+  const validCommentMaxLen = (value, length) => {
+    if (value.length <= length) {
+      setErrCommentMsg('')
+      return true
+    } else {
+      setErrCommentMsg(length + '字以内で入力してください')
+      return false
+    }
+  }
   // 投稿ボタンが押されたら
   const createPost = async () => {
     console.log('createPostメソッドです')
     console.log(newName)
     console.log(newComment)
-    await addDoc(postsCollectionRef, { name: newName, comment: newComment, picture: picture, updateData: Date('Y/m/d H:i:s') })
-    setNewName('')
-    setNewComment('')
+    const $flg1 = validNameRequired(newName)
+    const $flg2 = validCommentRequired(newComment)
+    if ($flg1 && $flg2) {
+      const $flg3 = validNameMaxLen(newName, 30)
+      const $flg4 = validCommentMaxLen(newComment, 140)
+      if ($flg3 && $flg4) {
+        await addDoc(postsCollectionRef, { name: newName, comment: newComment, picture: picture, updateData: Date('Y/m/d H:i:s') })
+        setNewName('')
+        setNewComment('')
+        console.log('createPostメソッドが終了')
+      }
+    }
+    console.log(errNameMsg)
   }
 
 
@@ -43,6 +102,7 @@ export const PostCreate = (props) => {
           value={newName}
           onChange={(event) => { setNewName(event.target.value) }}
         />
+        <span>{errNameMsg}</span>
       </div>
       <div className="form-control">
         <label className="label">
@@ -57,6 +117,7 @@ export const PostCreate = (props) => {
           onChange={(event) => { setNewComment(event.target.value) }}
           onKeyUp={() => { judgeForm() }}
         ></textarea>
+        <span>{errCommentMsg}</span>
       </div>
       <button className="btn btn-primary" onClick={() => createPost()}>
         投稿する
