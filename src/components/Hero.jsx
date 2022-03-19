@@ -11,38 +11,41 @@ const jsonData = require('../all_picture.json')
 //   primaryImage: string;
 // }
 
-export const Hero = () => {
-  const [picture, setPicture] = useState('')
+export const Hero = (props) => {
+  // const [picture, setPicture] = useState('')
 
-  const makeRandomPictureId = () => {
-    return jsonData.objectIDs[
-      Math.floor(Math.random() * jsonData.objectIDs.length)
-    ]
-  }
-  const [pictureId, setPictureId] = useState(makeRandomPictureId())
+  // const makeRandomPictureId = () => {
+  //   return jsonData.objectIDs[
+  //     Math.floor(Math.random() * jsonData.objectIDs.length)
+  //   ]
+  // }
+  // const [pictureId, setPictureId] = useState(makeRandomPictureId())
 
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
 
-  const changePicture = () => {
-    console.log('changePictureです')
-    setPictureId(makeRandomPictureId())
-  }
+  // const changePicture = () => {
+  //   console.log('changePictureです')
+  //   setPictureId(makeRandomPictureId())
+  // }
 
-  const fetchData = async (fetchUrl) => {
-    setLoading(true)
-    const request = await axios.get(fetchUrl)
-    console.log(request.data.primaryImage)
-    setPicture(request.data.primaryImage)
-    setLoading(false)
-    return request
-  }
+  // const fetchData = async (fetchUrl) => {
+  //   setLoading(true)
+  //   const request = await axios.get(fetchUrl)
+  //   console.log(request.data.primaryImage)
+  //   setPicture(request.data.primaryImage)
+  //   setLoading(false)
+  //   return request
+  // }
 
-  useEffect(() => {
-    console.log('HeroのuseEffectです')
-    fetchData(
-      `https://collectionapi.metmuseum.org/public/collection/v1/objects/${pictureId}`,
-    )
-  }, [pictureId])
+  // useEffect(() => {
+  //   console.log('HeroのuseEffectです')
+  //   fetchData(
+  //     `https://collectionapi.metmuseum.org/public/collection/v1/objects/${pictureId}`,
+  //   )
+  // }, [pictureId])
+  const picture = props.picture
+  const changePicture = props.changePicture
+  const loading = props.loading
 
   return (
     <>
@@ -61,7 +64,8 @@ export const Hero = () => {
           <img
             src={picture}
             alt="Album"
-            className="w-full h-full object-contain"
+            className="w-full h-full object-contain cursor-pointer"
+            onClick={() => console.log('画像がクリックされました')}
           />
         </figure>
       </div>
