@@ -5,13 +5,13 @@ import { isEmpty } from '@firebase/util'
 
 export const PostCreate = (props) => {
   const picture = props.picture
+  const notify = props.notify
+  const postsCollectionRef = collection(db, 'posts')
   const [newName, setNewName] = useState('')
   const [newComment, setNewComment] = useState('')
   const [errForm, setErrForm] = useState('')
-  const postsCollectionRef = collection(db, 'posts')
   const [errNameMsg, setErrNameMsg] = useState('')
   const [errCommentMsg, setErrCommentMsg] = useState('')
-
 
   const judgeForm = () => {
     if (newComment.length > 140) {
@@ -81,6 +81,7 @@ export const PostCreate = (props) => {
         await addDoc(postsCollectionRef, { name: newName, comment: newComment, picture: picture, updateData: Date('Y/m/d H:i:s') })
         setNewName('')
         setNewComment('')
+        notify('投稿に成功しました')
         console.log('createPostメソッドが終了')
       }
     }

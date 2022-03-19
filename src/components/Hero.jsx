@@ -12,42 +12,11 @@ const jsonData = require('../all_picture.json')
 // }
 
 export const Hero = (props) => {
-  // const [picture, setPicture] = useState('')
-
-  // const makeRandomPictureId = () => {
-  //   return jsonData.objectIDs[
-  //     Math.floor(Math.random() * jsonData.objectIDs.length)
-  //   ]
-  // }
-  // const [pictureId, setPictureId] = useState(makeRandomPictureId())
-
-  // const [loading, setLoading] = useState(false)
-
-  // const changePicture = () => {
-  //   console.log('changePictureです')
-  //   setPictureId(makeRandomPictureId())
-  // }
-
-  // const fetchData = async (fetchUrl) => {
-  //   setLoading(true)
-  //   const request = await axios.get(fetchUrl)
-  //   console.log(request.data.primaryImage)
-  //   setPicture(request.data.primaryImage)
-  //   setLoading(false)
-  //   return request
-  // }
-
-  // useEffect(() => {
-  //   console.log('HeroのuseEffectです')
-  //   fetchData(
-  //     `https://collectionapi.metmuseum.org/public/collection/v1/objects/${pictureId}`,
-  //   )
-  // }, [pictureId])
-
   const picture = props.picture
   const changePicture = props.changePicture
   const loading = props.loading
   const setIsModal = props.setIsModal
+  const notify = props.notify
 
   console.log('imageの画像パス')
   console.log(picture)
@@ -57,7 +26,7 @@ export const Hero = (props) => {
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">絵画をじっくりと観察してみましょう</h2>
-          <PostCreate picture={picture} />
+          <PostCreate picture={picture} notify={notify} />
           <div className="card-actions justify-center">
             <button className="btn btn-primary" onClick={() => changePicture()}>
               他の画像を見る

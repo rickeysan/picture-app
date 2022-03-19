@@ -48,15 +48,19 @@ function App() {
   }, [pictureId])
 
   const [isModal, setIsModal] = useState(false)
-  const notify = () => toast("Wow so easy !");
+  const notify = (value) => {
+    toast.success(value, {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 4000
+    });
+  }
 
   return (
     <div className="App relative">
-      <button onClick={notify}>Notify !</button>
       <ToastContainer />
       <Modal picture={picture} isModal={isModal} setIsModal={setIsModal} />
       <Header />
-      <Hero picture={picture} changePicture={changePicture} loading={loading} setIsModal={setIsModal} />
+      <Hero picture={picture} changePicture={changePicture} loading={loading} setIsModal={setIsModal} notify={notify} />
       <Posts />
     </div>
   )
