@@ -47,7 +47,7 @@ function App() {
 
   return (
     <div className="App relative">
-      <Modal picture={picture} isModal={isModal} />
+      <Modal picture={picture} isModal={isModal} setIsModal={setIsModal} />
       <Header />
       <Hero picture={picture} changePicture={changePicture} loading={loading} setIsModal={setIsModal} />
       <Posts />
