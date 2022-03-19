@@ -14,12 +14,13 @@ export const Modal = (props) => {
                 onClick={() => setIsModal(false)}
             >✕</label>
             <img
-                src={picture}
+                src={picture.primaryImage}
                 alt="Album"
                 className="w-9/12 h-3/4 mx-auto object-contain cursor-pointer"
             />
             <div className="">
-                <a className="link" href="https://qiita.com/metal_kentucky/items/6ee91514ca19edf453df">I'm a simple link</a>
+                <a className="link" target="_blank" rel="noreferrer"
+                    href={picture.objectURL}>詳細ページへ</a>
             </div>
         </div>
     )

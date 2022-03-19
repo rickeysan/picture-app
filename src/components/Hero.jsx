@@ -49,6 +49,9 @@ export const Hero = (props) => {
   const loading = props.loading
   const setIsModal = props.setIsModal
 
+  console.log('imageの画像パス')
+  console.log(picture)
+  console.log(picture.primaryImage)
   return (
     <>
       <div className="card lg:card-side bg-base-100 shadow-xl">
@@ -64,7 +67,7 @@ export const Hero = (props) => {
         <figure className="w-6/12 h-96">
           {loading && <ReactLoading type="spin" color="#696969" />}
           <img
-            src={picture}
+            src={picture.primaryImage}
             alt="Album"
             className="w-full h-full object-contain cursor-pointer"
             onClick={() => setIsModal(true)}

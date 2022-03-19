@@ -9,7 +9,6 @@ export const PostCreate = (props) => {
   const [newComment, setNewComment] = useState('')
   const [errForm, setErrForm] = useState('')
   const postsCollectionRef = collection(db, 'posts')
-  // const [errMsg, setErrMsg] = useState({ 'name': '', 'comment': '' })
   const [errNameMsg, setErrNameMsg] = useState('')
   const [errCommentMsg, setErrCommentMsg] = useState('')
 

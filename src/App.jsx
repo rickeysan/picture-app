@@ -30,8 +30,8 @@ function App() {
   const fetchData = async (fetchUrl) => {
     setLoading(true)
     const request = await axios.get(fetchUrl)
-    console.log(request.data.primaryImage)
-    setPicture(request.data.primaryImage)
+    console.log(request.data)
+    setPicture(request.data)
     setLoading(false)
     return request
   }

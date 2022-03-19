@@ -1,7 +1,7 @@
 export const Post = (props) => {
     const name = props.post.name
     const comment = props.post.comment
-    const imgPath = props.post.img_path
+    const imgPath = props.post.picture.primaryImage
 
     return (
         <div className="inline-block card w-96 bg-base-100 shadow-xl">
