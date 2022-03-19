@@ -9,6 +9,10 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from './axios'
 
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 const jsonData = require('./all_picture.json')
 
 function App() {
@@ -44,9 +48,12 @@ function App() {
   }, [pictureId])
 
   const [isModal, setIsModal] = useState(false)
+  const notify = () => toast("Wow so easy !");
 
   return (
     <div className="App relative">
+      <button onClick={notify}>Notify !</button>
+      <ToastContainer />
       <Modal picture={picture} isModal={isModal} setIsModal={setIsModal} />
       <Header />
       <Hero picture={picture} changePicture={changePicture} loading={loading} setIsModal={setIsModal} />
