@@ -1,11 +1,16 @@
 import { useState } from "react"
 
 export const Modal = (props) => {
-    const [isModal, setIsModal] = useState(false)
     const picture = props.picture
+    const isModal = props.isModal
+    console.log('Modalです')
+    console.log(isModal)
+    const activeStyle = "h-96 w-9/12 flex-nowrap justify-center items-center top-10 left-10 fixed z-10 bg-stone-100"
+    const normalStyle = "h-96 w-9/12 flex-nowrap justify-center items-center top-10 left-10 fixed z-10 bg-stone-100 hidden"
+    const modalStyle = isModal ? activeStyle : normalStyle // どちらのスタイルを当てるかを判別
 
     return (
-        <div className="h-96 w-9/12 flex-nowrap justify-center items-center top-10 left-10 fixed z-10 bg-stone-100">
+        <div className={modalStyle} >
             <img
                 src={picture}
                 alt="Album"

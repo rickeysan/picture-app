@@ -7,7 +7,6 @@ import { Modal } from 'components/Modal'
 import { useState } from 'react'
 
 import { useEffect } from 'react'
-import ReactLoading from 'react-loading'
 import axios from './axios'
 
 const jsonData = require('./all_picture.json')
@@ -44,12 +43,13 @@ function App() {
     )
   }, [pictureId])
 
+  const [isModal, setIsModal] = useState(false)
 
   return (
     <div className="App relative">
-      <Modal picture={picture} />
+      <Modal picture={picture} isModal={isModal} />
       <Header />
-      <Hero picture={picture} changePicture={changePicture} loading={loading} />
+      <Hero picture={picture} changePicture={changePicture} loading={loading} setIsModal={setIsModal} />
       <Posts />
     </div>
   )

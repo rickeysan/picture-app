@@ -43,9 +43,11 @@ export const Hero = (props) => {
   //     `https://collectionapi.metmuseum.org/public/collection/v1/objects/${pictureId}`,
   //   )
   // }, [pictureId])
+
   const picture = props.picture
   const changePicture = props.changePicture
   const loading = props.loading
+  const setIsModal = props.setIsModal
 
   return (
     <>
@@ -65,7 +67,7 @@ export const Hero = (props) => {
             src={picture}
             alt="Album"
             className="w-full h-full object-contain cursor-pointer"
-            onClick={() => console.log('画像がクリックされました')}
+            onClick={() => setIsModal(true)}
           />
         </figure>
       </div>
