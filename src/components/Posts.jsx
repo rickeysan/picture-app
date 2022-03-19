@@ -12,28 +12,24 @@ export const Posts = () => {
 
     useEffect(() => {
         const postData = collection(db, "posts")
-        // console.log(postData)
-        getDocs(postData).then((snapShot) => {
+        const q = query(postData, orderBy("updateData", "desc"));
+        getDocs(q).then((snapShot) => {
             console.log('getDocsです')
             console.log(snapShot.docs.map((doc) => ({ ...doc.data() })))
             setAllPosts(snapShot.docs.map((doc) => ({ ...doc.data() })))
             setFilteredPosts(snapShot.docs.map((doc) => ({ ...doc.data() })))
-            // console.log('allPostsの中身')
-            // console.log(allPosts)
-            // setIsMounted(true)
         })
+        /* リアルタイムで取得 */
+        onSnapshot(q, (querySnapshot) => {
+            console.log('リアルタイムです')
+            console.log(querySnapshot.docs);
+            setAllPosts(querySnapshot.docs.map((doc) => ({ ...doc.data() })));
+            setFilteredPosts(querySnapshot.docs.map((doc) => ({ ...doc.data() })))
+        });
     }, [])
 
     useEffect(() => {
         console.log('searchTextが変更されました')
-        // console.log(allPosts)
-        // console.log(filteredPosts)
-        // console.log(posts)
-        // console.log(posts[0])
-        // console.log(posts[0]['comment'])
-        // postsの中身に対して、検索キーワードで絞り込みをかけて、新しい値をセットする
-        // const newPosts = posts.filter(filterPosts)
-
         if (searchText !== '') {
             console.log('検索キーワードはあります')
             const newPosts = allPosts.filter((sample) => {
@@ -53,8 +49,6 @@ export const Posts = () => {
     }, [searchText])
 
     const handleSearchText = (value) => {
-        // console.log('handleSearchTextメソッドです')
-        // console.log(value)
         setSearchText(value)
     }
 
