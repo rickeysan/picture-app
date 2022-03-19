@@ -58,14 +58,6 @@ export const Posts = () => {
         setSearchText(value)
     }
 
-    const filterPosts = (elm) => {
-        // console.log('filterPostsです')
-        // console.log(searchText)
-        // console.log(elm)
-        const regexp = new RegExp('^' + searchText, 'i')
-        return (elm.comment.match(regexp))
-    }
-
     return (
         <div className="w-full">
             <h2>投稿一覧</h2>
