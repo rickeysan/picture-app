@@ -1,6 +1,4 @@
 export const Post = (props) => {
-    console.log('Postコンポーネント')
-    console.log(props)
     const name = props.post.name
     const comment = props.post.comment
     const imgPath = props.post.img_path
