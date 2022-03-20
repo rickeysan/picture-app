@@ -1,10 +1,5 @@
-import { useEffect } from 'react'
-import { useState } from 'react'
 import ReactLoading from 'react-loading'
-import axios from '../axios'
 import { PostCreate } from './PostCreate'
-
-const jsonData = require('../all_picture.json')
 
 type Props = {
   picture: {
@@ -20,9 +15,6 @@ export const Hero = (props: Props): JSX.Element => {
   console.log('Heroです')
   const { picture, changePicture, loading, setIsModal, notify } = props
 
-  console.log('imageの画像パス')
-  console.log(picture)
-  console.log(picture.primaryImage)
   return (
     <>
       <div className="card lg:card-side bg-base-100 shadow-xl">
