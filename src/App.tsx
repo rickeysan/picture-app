@@ -7,23 +7,25 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from './axios'
 import { ToastContainer, toast } from 'react-toastify'
-
 import 'react-toastify/dist/ReactToastify.css'
 
 const jsonData = require('./all_picture.json')
 
+type Picture = {
+  primaryImage: string
+}
+
 function App() {
-  const [picture, setPicture] = useState('')
-  const makeRandomPictureId = () => {
+  const [picture, setPicture] = useState<Picture>({ primaryImage: '' })
+  const makeRandomPictureId = (): number => {
     return jsonData.objectIDs[
       Math.floor(Math.random() * jsonData.objectIDs.length)
     ]
   }
-  const [pictureId, setPictureId] = useState(makeRandomPictureId())
-  const [loading, setLoading] = useState(false)
+  const [pictureId, setPictureId] = useState<number>(makeRandomPictureId())
+  const [loading, setLoading] = useState<boolean>(false)
 
-  const changePicture = () => {
-    // console.log('changePictureです')
+  const changePicture: Function = (): void => {
     setPictureId(makeRandomPictureId())
   }
 
@@ -43,7 +45,7 @@ function App() {
     )
   }, [pictureId])
 
-  const [isModal, setIsModal] = useState(false)
+  const [isModal, setIsModal] = useState<boolean>(false)
   const notify = (value: string): void => {
     toast.success(value, {
       position: toast.POSITION.TOP_CENTER,

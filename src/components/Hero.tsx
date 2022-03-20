@@ -6,17 +6,19 @@ import { PostCreate } from './PostCreate'
 
 const jsonData = require('../all_picture.json')
 
-// type Picture = {
-//   title: string;
-//   primaryImage: string;
-// }
+type Props = {
+  picture: {
+    primaryImage: string
+  }
+  changePicture: Function
+  loading: boolean
+  setIsModal: Function
+  notify: Function
+}
 
-export const Hero = (props) => {
-  const picture = props.picture
-  const changePicture = props.changePicture
-  const loading = props.loading
-  const setIsModal = props.setIsModal
-  const notify = props.notify
+export const Hero = (props: Props): JSX.Element => {
+  console.log('Heroです')
+  const { picture, changePicture, loading, setIsModal, notify } = props
 
   console.log('imageの画像パス')
   console.log(picture)

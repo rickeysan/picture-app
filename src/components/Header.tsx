@@ -14,11 +14,6 @@ export const Header = () => {
               <path d="M4 6h16M4 12h16M4 18h7" />
             </svg>
           </label>
-          {/* <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Homepage</a></li>
-                        <li><a>Portfolio</a></li>
-                        <li><a>About</a></li>
-                    </ul> */}
         </div>
       </div>
       <div className="navbar-center">
