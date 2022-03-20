@@ -13,10 +13,14 @@ const jsonData = require('./all_picture.json')
 
 type Picture = {
   primaryImage: string
+  objectURL: string
 }
 
 function App() {
-  const [picture, setPicture] = useState<Picture>({ primaryImage: '' })
+  const [picture, setPicture] = useState<Picture>({
+    primaryImage: '',
+    objectURL: '',
+  })
   const makeRandomPictureId = (): number => {
     return jsonData.objectIDs[
       Math.floor(Math.random() * jsonData.objectIDs.length)

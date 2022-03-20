@@ -7,7 +7,9 @@ import { Search } from './Search'
 type Post = {
   name: string
   comment: string
-  picture: object
+  picture: {
+    primaryImage: string
+  }
   updateData: string
 }
 
