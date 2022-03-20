@@ -13,12 +13,12 @@ export const Posts = () => {
     useEffect(() => {
         const postData = collection(db, "posts")
         const q = query(postData, orderBy("updateData", "desc"));
-        getDocs(q).then((snapShot) => {
-            console.log('getDocsです')
-            console.log(snapShot.docs.map((doc) => ({ ...doc.data() })))
-            setAllPosts(snapShot.docs.map((doc) => ({ ...doc.data() })))
-            setFilteredPosts(snapShot.docs.map((doc) => ({ ...doc.data() })))
-        })
+        // getDocs(q).then((snapShot) => {
+        //     console.log('getDocsです')
+        //     console.log(snapShot.docs.map((doc) => ({ ...doc.data() })))
+        //     setAllPosts(snapShot.docs.map((doc) => ({ ...doc.data() })))
+        //     setFilteredPosts(snapShot.docs.map((doc) => ({ ...doc.data() })))
+        // })
         /* リアルタイムで取得 */
         onSnapshot(q, (querySnapshot) => {
             console.log('リアルタイムです')
