@@ -31,7 +31,7 @@ export const Hero = (props: Props): JSX.Element => {
           {loading && <ReactLoading type="spin" color="#696969" />}
           <img
             src={picture.primaryImage}
-            alt="Album"
+            alt=""
             className="w-full h-full object-contain cursor-pointer"
             onClick={() => setIsModal(true)}
           />

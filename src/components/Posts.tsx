@@ -10,7 +10,7 @@ type Post = {
   picture: {
     primaryImage: string
   }
-  updateData: string
+  updateDate: string
 }
 
 export const Posts = (): JSX.Element => {
@@ -20,7 +20,7 @@ export const Posts = (): JSX.Element => {
 
   useEffect(() => {
     const postData = collection(db, 'posts')
-    const q = query(postData, orderBy('updateData', 'desc'))
+    const q = query(postData, orderBy('updateDate', 'desc'))
     /* リアルタイムで取得 */
     onSnapshot(q, (querySnapshot) => {
       console.log('リアルタイムです')

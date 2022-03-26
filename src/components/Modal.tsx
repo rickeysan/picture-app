@@ -25,7 +25,7 @@ export const Modal = (props: Props): JSX.Element => {
       </label>
       <img
         src={picture.primaryImage}
-        alt="Album"
+        alt=""
         className="w-9/12 h-3/4 mx-auto object-contain cursor-pointer"
       />
       <div className="">

@@ -78,7 +78,7 @@ export const PostCreate = (props: Props): JSX.Element => {
           name: newName,
           comment: newComment,
           picture: picture,
-          updateData: nowStr,
+          updateDate: nowStr,
         })
         setNewName('')
         setNewComment('')

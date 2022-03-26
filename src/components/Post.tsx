@@ -5,13 +5,30 @@ type Props = {
     picture: {
       primaryImage: string
     }
+    updateDate: string
   }
 }
 
 export const Post = (props: Props): JSX.Element => {
-  const name = props.post.name
-  const comment = props.post.comment
-  const imgPath = props.post.picture.primaryImage
+  console.log('Postです')
+  // console.log(props.post)
+  const { post } = props
+  const name = post.name
+  const comment = post.comment
+  const imgPath = post.picture.primaryImage
+  const date = post.updateDate
+  const targetDate = new Date(date)
+  const shapedDate =
+    targetDate.getFullYear() +
+    '年' +
+    targetDate.getMonth() +
+    '月' +
+    targetDate.getDate() +
+    '日' +
+    targetDate.getHours() +
+    '時' +
+    targetDate.getMinutes() +
+    '分'
 
   return (
     <div className="inline-block card w-96 bg-base-100 shadow-xl">
@@ -22,7 +39,7 @@ export const Post = (props: Props): JSX.Element => {
         <h2 className="card-title">{name}</h2>
         <p>{comment}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+          <span>{shapedDate}</span>
         </div>
       </div>
     </div>
