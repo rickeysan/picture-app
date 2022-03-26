@@ -7,10 +7,11 @@ type Props = {
     primaryImage: string
   }
   notify: Function
+  changePicture: Function
 }
 
 export const PostCreate = (props: Props): JSX.Element => {
-  const { picture, notify } = props
+  const { picture, changePicture, notify } = props
   const postsCollectionRef = collection(db, 'posts')
   const [newName, setNewName] = useState<string>('')
   const [newComment, setNewComment] = useState<string>('')
@@ -83,6 +84,7 @@ export const PostCreate = (props: Props): JSX.Element => {
         setNewName('')
         setNewComment('')
         notify('投稿に成功しました')
+        changePicture()
       }
     }
   }
@@ -107,7 +109,7 @@ export const PostCreate = (props: Props): JSX.Element => {
       <div className="form-control">
         <label className="label">
           <span className="label-text">
-            この絵画から分かる事実を140字以内で書いてみましょう 　　{' '}
+            この絵画から分かる事実を140字以内で書いてみましょう
             <span className={errForm}>{newComment.length} / 140文字</span>
           </span>
         </label>

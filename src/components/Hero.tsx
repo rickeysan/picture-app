@@ -20,7 +20,11 @@ export const Hero = (props: Props): JSX.Element => {
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">絵画をじっくりと観察してみましょう</h2>
-          <PostCreate picture={picture} notify={notify} />
+          <PostCreate
+            picture={picture}
+            changePicture={changePicture}
+            notify={notify}
+          />
           <div className="card-actions justify-center">
             <button className="btn btn-primary" onClick={() => changePicture()}>
               他の画像を見る
