@@ -1,0 +1,5 @@
+{
+    "eslint.workingDirectories": [
+        "./applications/mamp/htdocs/react-crud/picture-app/tsconfig.dev.json"
+    ]
+}
