@@ -56,20 +56,27 @@ function App() {
       autoClose: 4000,
     })
   }
+  const [modalImg, setModalImg] = useState('')
 
   return (
     <div className="App relative">
       <ToastContainer />
-      <Modal picture={picture} isModal={isModal} setIsModal={setIsModal} />
+      <Modal
+        picture={picture}
+        isModal={isModal}
+        setIsModal={setIsModal}
+        modalImg={modalImg}
+      />
       <Header />
       <Hero
         picture={picture}
         changePicture={changePicture}
         loading={loading}
         setIsModal={setIsModal}
+        setModalImg={setModalImg}
         notify={notify}
       />
-      <Posts />
+      <Posts setIsModal={setIsModal} setModalImg={setModalImg} />
     </div>
   )
 }

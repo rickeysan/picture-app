@@ -8,12 +8,14 @@ type Props = {
   changePicture: Function
   loading: boolean
   setIsModal: Function
+  setModalImg: Function
   notify: Function
 }
 
 export const Hero = (props: Props): JSX.Element => {
   console.log('Heroです')
-  const { picture, changePicture, loading, setIsModal, notify } = props
+  const { picture, changePicture, loading, setIsModal, setModalImg, notify } =
+    props
 
   return (
     <>
@@ -37,7 +39,10 @@ export const Hero = (props: Props): JSX.Element => {
             src={picture.primaryImage}
             alt=""
             className="w-full h-full object-contain cursor-pointer"
-            onClick={() => setIsModal(true)}
+            onClick={() => {
+              setIsModal(true)
+              setModalImg(picture.primaryImage)
+            }}
           />
         </figure>
       </div>

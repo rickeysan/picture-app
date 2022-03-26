@@ -7,12 +7,13 @@ type Props = {
     }
     updateDate: string
   }
+  setIsModal: Function
+  setModalImg: Function
 }
 
 export const Post = (props: Props): JSX.Element => {
   console.log('Postです')
-  // console.log(props.post)
-  const { post } = props
+  const { post, setIsModal, setModalImg } = props
   const name = post.name
   const comment = post.comment
   const imgPath = post.picture.primaryImage
@@ -33,7 +34,14 @@ export const Post = (props: Props): JSX.Element => {
   return (
     <div className="inline-block card w-96 bg-base-100 shadow-xl">
       <figure>
-        <img src={imgPath} alt="Shoes" />
+        <img
+          src={imgPath}
+          alt="Shoes"
+          onClick={() => {
+            setIsModal(true)
+            setModalImg(imgPath)
+          }}
+        />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>

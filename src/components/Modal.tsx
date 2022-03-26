@@ -5,10 +5,11 @@ type Props = {
   }
   isModal: boolean
   setIsModal: Function
+  modalImg: string
 }
 
 export const Modal = (props: Props): JSX.Element => {
-  const { picture, isModal, setIsModal } = props
+  const { picture, isModal, setIsModal, modalImg } = props
   const activeStyle =
     'h-96 w-9/12 flex-nowrap justify-center items-center top-10 left-10 fixed z-10 bg-stone-100'
   const normalStyle =
@@ -24,7 +25,7 @@ export const Modal = (props: Props): JSX.Element => {
         ✕
       </label>
       <img
-        src={picture.primaryImage}
+        src={modalImg}
         alt=""
         className="w-9/12 h-3/4 mx-auto object-contain cursor-pointer"
       />

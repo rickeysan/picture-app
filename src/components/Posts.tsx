@@ -12,8 +12,13 @@ type Post = {
   }
   updateDate: string
 }
+type Props = {
+  setIsModal: Function
+  setModalImg: Function
+}
 
-export const Posts = (): JSX.Element => {
+export const Posts = (props: Props): JSX.Element => {
+  const { setIsModal, setModalImg } = props
   const [allPosts, setAllPosts] = useState<Array<Post>>([])
   const [filteredPosts, setFilteredPosts] = useState<Array<Post>>([])
   const [searchText, setSearchText] = useState('')
@@ -56,7 +61,12 @@ export const Posts = (): JSX.Element => {
       <h2>投稿一覧</h2>
       <Search handleSearchText={handleSearchText} />
       {filteredPosts.map((post: Post, index: number) => (
-        <Post post={post} key={index} />
+        <Post
+          post={post}
+          key={index}
+          setIsModal={setIsModal}
+          setModalImg={setModalImg}
+        />
       ))}
     </div>
   )
