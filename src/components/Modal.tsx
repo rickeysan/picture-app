@@ -11,15 +11,15 @@ type Props = {
 export const Modal = (props: Props): JSX.Element => {
   const { picture, isModal, setIsModal, modalImg } = props
   const activeStyle =
-    'h-96 w-9/12 flex-nowrap justify-center items-center top-10 left-10 fixed z-10 bg-stone-100'
+    'h-screen  w-screen flex-wrap justify-center items-center fixed z-10 bg-stone-100'
   const normalStyle =
-    'h-96 w-9/12 flex-nowrap justify-center items-center top-10 left-10 fixed z-10 bg-stone-100 hidden'
+    'h-screen w-screen flex-wrap justify-center items-center fixed z-10 bg-stone-100 hidden'
   const modalStyle = isModal ? activeStyle : normalStyle
 
   return (
     <div className={modalStyle}>
       <label
-        className="btn btn-sm btn-circle absolute right-2 top-2"
+        className="btn btn-m btn-circle absolute right-2 top-2"
         onClick={() => setIsModal(false)}
       >
         ✕
