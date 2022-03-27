@@ -4,18 +4,27 @@ import { PostCreate } from './PostCreate'
 type Props = {
   picture: {
     primaryImage: string
+    objectURL: string
   }
   changePicture: Function
   loading: boolean
   setIsModal: Function
   setModalImg: Function
   notify: Function
+  setModalUrl: Function
 }
 
 export const Hero = (props: Props): JSX.Element => {
   console.log('Heroです')
-  const { picture, changePicture, loading, setIsModal, setModalImg, notify } =
-    props
+  const {
+    picture,
+    changePicture,
+    loading,
+    setIsModal,
+    setModalImg,
+    setModalUrl,
+    notify,
+  } = props
 
   return (
     <>
@@ -37,6 +46,7 @@ export const Hero = (props: Props): JSX.Element => {
             onClick={() => {
               setIsModal(true)
               setModalImg(picture.primaryImage)
+              setModalUrl(picture.objectURL)
             }}
           />
         </figure>

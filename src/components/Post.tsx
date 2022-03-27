@@ -4,19 +4,22 @@ type Props = {
     comment: string
     picture: {
       primaryImage: string
+      objectURL: string
     }
     updateDate: string
   }
   setIsModal: Function
   setModalImg: Function
+  setModalUrl: Function
 }
 
 export const Post = (props: Props): JSX.Element => {
   console.log('Postです')
-  const { post, setIsModal, setModalImg } = props
+  const { post, setIsModal, setModalImg, setModalUrl } = props
   const name = post.name
   const comment = post.comment
   const imgPath = post.picture.primaryImage
+  const imgUrl = post.picture.objectURL
   const date = post.updateDate
   const targetDate = new Date(date)
   const shapedDate =
@@ -40,6 +43,7 @@ export const Post = (props: Props): JSX.Element => {
           onClick={() => {
             setIsModal(true)
             setModalImg(imgPath)
+            setModalUrl(imgUrl)
           }}
         />
       </figure>

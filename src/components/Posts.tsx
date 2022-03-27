@@ -9,16 +9,18 @@ type Post = {
   comment: string
   picture: {
     primaryImage: string
+    objectURL: string
   }
   updateDate: string
 }
 type Props = {
   setIsModal: Function
   setModalImg: Function
+  setModalUrl: Function
 }
 
 export const Posts = (props: Props): JSX.Element => {
-  const { setIsModal, setModalImg } = props
+  const { setIsModal, setModalImg, setModalUrl } = props
   const [allPosts, setAllPosts] = useState<Array<Post>>([])
   const [filteredPosts, setFilteredPosts] = useState<Array<Post>>([])
   const [searchText, setSearchText] = useState('')
@@ -66,6 +68,7 @@ export const Posts = (props: Props): JSX.Element => {
           key={index}
           setIsModal={setIsModal}
           setModalImg={setModalImg}
+          setModalUrl={setModalUrl}
         />
       ))}
     </div>

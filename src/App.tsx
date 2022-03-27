@@ -57,6 +57,7 @@ function App() {
     })
   }
   const [modalImg, setModalImg] = useState('')
+  const [modalUrl, setModalUrl] = useState('')
 
   return (
     <div className="App relative">
@@ -66,6 +67,7 @@ function App() {
         isModal={isModal}
         setIsModal={setIsModal}
         modalImg={modalImg}
+        modalUrl={modalUrl}
       />
       <Header />
       <Hero
@@ -74,9 +76,14 @@ function App() {
         loading={loading}
         setIsModal={setIsModal}
         setModalImg={setModalImg}
+        setModalUrl={setModalUrl}
         notify={notify}
       />
-      <Posts setIsModal={setIsModal} setModalImg={setModalImg} />
+      <Posts
+        setIsModal={setIsModal}
+        setModalImg={setModalImg}
+        setModalUrl={setModalUrl}
+      />
     </div>
   )
 }
