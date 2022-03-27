@@ -32,7 +32,7 @@ export const Post = (props: Props): JSX.Element => {
     '分'
 
   return (
-    <div className="inline-block card w-96 bg-base-100 shadow-xl">
+    <div className="inline-block card w-96 bg-base-100 shadow-xl m-2">
       <figure>
         <img
           src={imgPath}

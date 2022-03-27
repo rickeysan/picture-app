@@ -37,7 +37,7 @@ export const Search = (props: Props): JSX.Element => {
               setValue(event.target.value)
             }}
             placeholder="キーワード"
-            className="input input-bordered"
+            className="input input-bordered w-60	"
           />
         </label>
       </div>

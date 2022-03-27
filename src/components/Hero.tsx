@@ -19,7 +19,7 @@ export const Hero = (props: Props): JSX.Element => {
 
   return (
     <>
-      <div className="card lg:card-side bg-base-100 shadow-xl">
+      <div className="card lg:card-side bg-base-100 shadow-xl pb-3">
         <div className="card-body">
           <h2 className="card-title">絵画をじっくりと観察してみましょう</h2>
           <PostCreate
@@ -27,11 +27,6 @@ export const Hero = (props: Props): JSX.Element => {
             changePicture={changePicture}
             notify={notify}
           />
-          <div className="card-actions justify-center">
-            <button className="btn btn-primary" onClick={() => changePicture()}>
-              他の画像を見る
-            </button>
-          </div>
         </div>
         <figure className="w-6/12 h-96">
           {loading && <ReactLoading type="spin" color="#696969" />}

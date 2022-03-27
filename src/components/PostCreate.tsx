@@ -104,7 +104,7 @@ export const PostCreate = (props: Props): JSX.Element => {
             setNewName(event.target.value)
           }}
         />
-        <span>{errNameMsg}</span>
+        <span className="text-rose-600 text-left text-sm	">{errNameMsg}</span>
       </div>
       <div className="form-control">
         <label className="label">
@@ -124,11 +124,16 @@ export const PostCreate = (props: Props): JSX.Element => {
             judgeForm()
           }}
         ></textarea>
-        <span>{errCommentMsg}</span>
+        <span className="text-rose-600 text-left text-sm	">{errCommentMsg}</span>
       </div>
-      <button className="btn btn-primary" onClick={() => createPost()}>
-        投稿する
-      </button>
+      <div className="flex justify-between">
+        <button className="btn btn-primary" onClick={() => createPost()}>
+          投稿する
+        </button>
+        <button className="btn btn-secondary" onClick={() => changePicture()}>
+          他の画像を見る
+        </button>
+      </div>
     </>
   )
 }

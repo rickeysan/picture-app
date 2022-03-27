@@ -57,8 +57,8 @@ export const Posts = (props: Props): JSX.Element => {
   }
 
   return (
-    <div className="w-full">
-      <h2>投稿一覧</h2>
+    <div className="w-full pt-6	">
+      <h2 className="text-lg	">投稿一覧</h2>
       <Search handleSearchText={handleSearchText} />
       {filteredPosts.map((post: Post, index: number) => (
         <Post
